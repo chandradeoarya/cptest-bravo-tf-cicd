@@ -13,7 +13,7 @@ terraform {
 }
 
 resource "aws_s3_bucket" "tf_s3_cicd" {
-  bucket = "lamars-practice-bucket-cicd" 
+  bucket = "lamars-bucket-wk14" 
   tags = {
     "name" = "tfcicd-bucket",
     "team" = "devops"
@@ -25,7 +25,7 @@ resource "aws_s3_bucket" "tf_s3_cicd" {
 
 terraform {
   backend "s3" {
-    bucket       = "lamars-cicd-practice"
+    bucket       = "lamars-practice-bucket-cicd"
     key          = "backend/terraform.tfstate"
     region       = "us-east-2"
   }
