@@ -3,7 +3,7 @@ name: 'Terraform CI/CD Wk14'
 on:
   push:
     branches:
-      - master
+      - testing
 
 jobs:
   terraform:
