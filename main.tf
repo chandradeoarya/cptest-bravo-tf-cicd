@@ -10,17 +10,10 @@ terraform {
     }
   }
 
-    backend "s3" {
-    bucket         = "tf-s3-state-3243451"
-    key            = "terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "tf_dynamodb_state_lock"
-    encrypt        = true
-  }
 }
 
 resource "aws_s3_bucket" "tf_s3_cicd" {
-  bucket = "chandra-tf-cicd-bucket-testing-chandra2"  # Replace with your desired bucket name
+  bucket = "lamars-practice-bucket-cicd" 
   tags = {
     "name" = "tfcicd-bucket",
     "team" = "devops"
@@ -29,6 +22,17 @@ resource "aws_s3_bucket" "tf_s3_cicd" {
     "text" = "checking pull request"
   }
 }
+
+terraform {
+  backend "s3" {
+    bucket       = "lamars-cicd-practice"
+    key          = "backend/terraform.tfstate"
+    region       = "us-east-2"
+  }
+}
+
+
+
 output "bucket_id" {
   description = "Bucket ID"
   value = aws_s3_bucket.tf_s3_cicd.id
